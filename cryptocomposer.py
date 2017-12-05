@@ -362,11 +362,11 @@ def process_input(opts, args):
 if __name__ == '__main__':
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], 't:i:o:s:l:h')
-		print opts, args
+		# print opts, args
 	except getopt.GetoptError:
 		usage()
 
 	plaintext, path_output = process_input(opts, args)
-	print SCALE
+	# print SCALE
 	lily = encrypt(plaintext)
 	make_lilypond(lily, path_output, plaintext)
