@@ -57,5 +57,5 @@ Notes = {
 }
 
 LILYPOND_HEADER = "\\version \"2.18.2\"\n\\header {\n  title = \""
-LILYPOND_MIDDLE = "\"\n  composer = \"Xander Beberman Musical Encryption\"\n}\n\nmelody = {\n  \\clef treble\n  \\key c \\major\n  \\time 4/4\n  "
+LILYPOND_MIDDLE = "\"\n  composer = \"Cryptocomposer by Xander Beberman\"\n}\n\nmelody = {\n  \\clef treble\n  \\key c \\major\n  \\time 4/4\n  "
 LILYPOND_FOOTER = "\n}\n\n\\score {\n  \\new Staff \\melody\n  \\layout { }\n  \\midi { }\n}"
