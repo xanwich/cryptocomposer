@@ -352,6 +352,7 @@ def process_input(opts, args):
 		else:
 			file_in = open(path_input, 'r')
 			plaintext = file_in.read()
+			file_in.close()
 	if path_output == "":
 		usage()
 
