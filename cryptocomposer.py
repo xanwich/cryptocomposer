@@ -295,13 +295,13 @@ def make_lilypond(lily, path_output, plaintext):
 
 def usage():
 	print "USAGE: python cryptocomposer.py (-t TEXT | -i INPUT) (-o OUTPUT) [-s SCALE] [-l LENGTH] [-h]"
-	print "\n\tINPUT\tplaintext to encode. -t takes precedence over -i"
+	print "\n\tTEXT\tplaintext to encode. -t takes precedence over -i"
 	print "\n\tINPUT\t.txt file with plaintext to encode"
 	print "\n\tOUTPUT\t.txt to which ciphertext is written"
 	print "\n\tSCALE\tscale to use for in key penalties. Options are:"
 	print "\t\tmajor\t\t(default) major scale"
 	print "\t\tminor\t\tminor scale"
-	print "\t\tharmnonic\tharmonic minor scale"
+	print "\t\tharmonic\tharmonic minor scale"
 	print "\t\tpentatonic\tmajor pentatonic scale"
 	print "\n\tLENGTH\tnote length to use when generating sequences. Options are:"
 	print "\t\trandom\t\t(default) uses a random note length for every sequence"
