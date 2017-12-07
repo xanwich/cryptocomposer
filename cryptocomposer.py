@@ -127,7 +127,7 @@ def make_sequence(start, intervals, choice="random"):
 			coeff = -1*np.sign(start.value)
 		else:
 			print "Error in make_sequence: choice given as " + str(choice)
-			return False
+			sys.exit(1)
 		new = Note(seq[-1].value + coeff*i)
 		seq.append(new)
 	return seq
