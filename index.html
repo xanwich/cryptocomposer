@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Cryptocomposer</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px;
+  text-align: justify;
+  text-justify: inter-word; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 10px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: -10;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Cryptocomposer: A Musical Encryption System</h1>
+
+<p>Xander Beberman<br>
+Final project for LING 26040 Code Making, Code Breaking</p>
+
+<h2 id="toc_1">Intro</h2>
+
+<p>Musical encryption has been happening, at a limited level, since before modern notation existed. The most common methods of encryption use individual notes that correspond to individual letters. The simplest of these is to simply use the note names themselves (especially using the German convention of referring to B&#9837; as B and B&#9838; as H) to spell out words. Many composers, famously Bach, include motifs in compositions to convey short lines of text as a signature or nod to others.<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> The obvious problem with this system is that it can only encode the letters A−H.</p>
+
+<figure>
+    <center>
+    <img src="site/bach.png" width=150px alt="The B-A-C-H motif">
+    <figcaption>The B-A-C-H motif</figcaption>
+    </center>
+</figure>
+
+<p>Other common systems either assign multiple letters to each note or use accidentals to differentiate between letters in sheet music.<sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup> The clear downside to these is that they are not easily reversible. Although decrypting using accidentals would be exact given a score, enharmonic pairs would create ambiguity between two letters when decrypting given only audio of the music. The other disadvantage of these systems is that their strictness might have negative repercussions on the quality of compositions created with them. Trying to encrypt even a fairly long message might necessitate composing with a difficult and dissonant series of notes.</p>
+
+<p>My goal for this project was to create a system of musical encryption \(E(x)\) that solves most, if not all of the problems with these common systems. Specifically, for the encryption to satisfy the following criteria:</p>
+
+<ul>
+<li>The encryption should translate unpunctuated text of the full English alphabet into music. The original intention was that the output of this encryption would be a monophonic melody with accompanying chords, although it ended up as just a melody.</li>
+<li>The encryption is totally reversible; E−1(E(x)) = x exactly.</li>
+<li>The encryption algorithm should be computationally implementable, and part of the project should implement a program that takes in text and outputs a score. However,</li>
+<li>The score is not a part of the encryption. Any in-the-know listener with a good ear should be able to figure out the plaintext.</li>
+<li>The music the algorithm produces should sound good (or at least not incredibly cacophonous). Whether I succeeded on this is best left to the listener.</li>
+<li>The score produced by the algorithm should not be restricted to playback on a specific instrument.</li>
+<li>It should be possible to produce multiple distinct encryptions of the same text.</li>
+</ul>
+
+<h2 id="toc_2">Encryption</h2>
+
+<h3 id="toc_3">Algorithm</h3>
+
+<p>The encryption system I propose is based not on the notes themselves, but the intervals between them. Each letter in this system is represented as a shift of the previous letter by the product of intervals. Below is an outline of the encryption algorithm:</p>
+
+<ol>
+<li>To encrypt a letter, begin with the previous letter \(L_{i-1}\). If this is the first letter, assume \(L_0\) is A.</li>
+<li>Get the numeric shift \(S\) between \(L_{i-1}\) and the letter to encrypt \(L_i\). For instance, if \(L_{i-1}\) is C and \(L_i\) is M, \(S = 13 - 3 = 10\).</li>
+<li>Choose a sequence of notes such that the product of the sizes of intervals between each pair of notes is equal to \(S\). The sizes are in half steps: the sequence C, D, F has a product of \(2 \cdot 3 = 6\). There are some exceptions to this:
+
+<ol>
+<li>The size of an interval is not determined by the direction; the interval C, F has size 5, as does the interval F, C</li>
+<li>If a sequence contains only one note, it is decrypted as a shift of magnitude zero, i.e. \(L_i = L_{i-1}\).</li>
+<li>If a sequence contains a note that is doubled, it is not considered an interval of size zero. Instead, it indicates that one should be added to the final product of intervals. For instance, the sequence C, D, D, F has a product of \((2 \cdot 3) + 1 = 7\).</li>
+</ol></li>
+<li>Add a rest after the sequence to terminate it, and repeat.</li>
+</ol>
+
+<p>Let&rsquo;s run through a step-by-step example. Suppose we want to encode our own version of the Bach motif. Start by determining the first shift. We have \(L_1 = B\), and we recall \(L_0 = A\). This means the first shift we must encode is 1. We don&rsquo;t want to begin our melody with a half step, so we can instead repeat the same note once:
+<figure>
+    <center>
+    <img src="site/example/bach1.png" height=60px alt="B">
+    </center>
+</figure>
+The sequence F, F uses the rule described above to encode the shift 1. To get the next letter, we take \(L_2 = A\). This is a shift of -1, or equivalently, 25. Since we don&rsquo;t want to use an interval of 25 half steps, we can use two intervals of size 5:
+<figure>
+    <center>
+    <img src="site/example/bach2.png" height=60px alt="B-A">
+    </center>
+</figure>
+Then to get to \(L_3 = C\) we use a simple whole step for shift 2:
+<figure>
+    <center>
+    <img src="site/example/bach3.png" height=60px alt="B-A-C">
+    </center>
+</figure>
+And a fourth, or 5 half steps, to get from C to \(L_4 = H\):
+<figure>
+    <center>
+    <img src="site/example/bach4.png" height=60px alt="B-A-C-H">
+    </center>
+</figure>
+Then we can add some chords to make this seem like a real melody and not a secret message:
+<figure>
+    <center>
+    <img src="site/example/bach5.png" height=60px alt="B-A-C-H with chords">
+    </center>
+</figure>
+Take a listen:
+<center>
+<audio controls>
+    <source src="site/example/bach.mp3" type="audio/mpeg" alt="B-A-C-H with chords audio">
+    Your browser does not support the audio element.
+</audio>
+</center></p>
+
+<h3 id="toc_4">Why This Algorithm?</h3>
+
+<p>Existing methods of musical encryption sound dissonant and may require sheet music to decrypt. These are properties I wanted to avoid while constructing my algorithm. Using intervals to represent letters instead of notes was the clearest solution&mdash;doing so allows the encryptor to choose notes more freely, since they are not as determined by the plaintext. By using combinations of intervals, the algorithm can produce large numbers without writing strange pieces with extended ranges. In addition, interval widths are much easier to hear than specific pitches, which helps this algorithm be decrypted without the aid of tuners or perfect pitch. The decision to use the product of intervals to get the shift rather than the sum comes from the one unbeatable aspect of single note&ndash;letter pairings: compactness. Using the sum of intervals would be more clear, but would require either wider intervals or longer sequences. To get from A&ndash;Z, one would still have to move a total of 25 half steps, which means writing either a few very large intervals or many small intervals. Using the product of intervals kept both of those cases to a minimum. The rule about doubled notes was included because it is difficult to find the product of some numbers, especially the many primes between 0&ndash;25. Allowing this rule helps give options to encryptors for how to succinctly write letters. Finally, I chose to make the shift for each letter dependent on the previous letter to create a more uniform distribution of shifts instead of one that depends heavily on the distribution of English letters. </p>
+
+<h3 id="toc_5">Other Properties</h3>
+
+<p>One nice feature of this encryption system is that since the shift is modulo 26, there are an infinite number of shifts between two letters. This means that any shift can be represented by an arbitrarily long sequence of notes. In addition, since the shift is given by the product of intervals, any number of half steps included in a sequence will not change its shift. You can play the entire chromatic scale up and down the piano and the resulting shift will still be one.</p>
+
+<h2 id="toc_6">Program</h2>
+
+<p>The source code for this project is available to <a href="https://github.com/xanwich/cryptocomposer">view and download on GitHub.</a></p>
+
+<h3 id="toc_7">Structure</h3>
+
+<p>The script <code>cryptocomposer.py</code> is written in python and takes in an input text with some parameters and automatically generates a score that is encrypted using this method to correspond to the text. The file <code>dictionaries.py</code> contains some helpful constants.</p>
+
+<p>The computational implementation of this algorithm works by taking in text, converting it to shifts to be encoded, and generating short phrases for each shift. To keep things simple, the program is based entirely in the key of C. Notes are saved by their pitch in number of half steps from middle C. Notes are saved in lists that I call &ldquo;sequences,&rdquo; which each correspond to each letter in the input text.</p>
+
+<h3 id="toc_8">Generating Melodies</h3>
+
+<p>One of the goals of this project was to computationally generate melodies from text that sound passable: no phrases horrendously out of key or with constant, crazy jumps in pitch. This turned out to be the most difficult part of the project. I generated these melodies one letter, or one sequence at a time.</p>
+
+<p>Using this method of encryption, each possible shift has an infinite number of possible sequences that correspond to it. Too keep things simple, I defined a number of simple interval sequences for each possible shift that are stored in <code>dictionaries.py</code>. However, deciding which sequence to use is still an issue. Each list of intervals can correspond to sequences starting on any note, with intervals going in any direction, and with its intervals in any order.<sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup> I wanted to give the computer a number of options to choose from, but did not want to make the search space too large in order to keep performance reasonable. The answer I chose was to randomize each sequence. The algorithm for creating one candidate sequence given a starting note and a list of intervals is as follows:<sup id="fnref4"><a href="#fn4" rel="footnote">4</a></sup></p>
+
+<div><pre><code class="language-none">make_sequence(interval_list, starting_note):
+    randomly shuffle interval_list
+    note_sequence &lt;- new list containing starting_note
+    for each interval in interval_list:
+        sign &lt;- randomly choose -1 or 1
+        new_note &lt;- last element of note_sequence + sign * interval
+        append new_note to note_sequence
+    return note_sequence</code></pre></div>
+
+<p>This describes how to create a candidate sequence, but not how to choose the best one. To do this, I created a system of penalties that are applied to sequences when determining which to use. The penalties are:</p>
+
+<ul>
+<li><strong>In Key:</strong> At runtime, a scale is specified&mdash;this can be the major, minor, harmonic minor, or major pentatonic scale. Each note in a sequence that is not in the specified scale is penalized with a constant. So a sequence with one note out of the scale has penalty \(3\), whereas a sequence with four notes out of key has penalty \(4 \cdot 3 = 12\).</li>
+<li><strong>Distance from Center:</strong> To avoid creating large jumps in intervals or straying to far up or down the scale, each note in a sequence is penalized by its squared distance from middle C. The sequence \(S\) is penalized as \(\frac{1}{25}\sum_{n \in S} n^2\).</li>
+<li><strong>Sequence Length:</strong> To avoid excessively long sequences, each sequence \(S\) is also penalized by \(2 \cdot (\text{length}(S) - 2)\), or not at all if the sequence is of length two or less.</li>
+<li><strong>Voice Leading:</strong> To avoid large jumps between sequences, each sequence is also penalized by the difference between its first note and the previous sequence&rsquo;s last note. If \(p\) is the last note in the previous sequence and \(s\) is the first note in the current sequence, the penalty is \(|s-p|\). For the first sequence, \(p = 0\).</li>
+</ul>
+
+<p>For each shift \(S\), the program takes each list of intervals associated with \(S\) and creates candidate sequences for each list of intervals for every starting note between a fifth below and a fifth above the last note in the previous sequence. It also does the same for each list of intervals associated with \(S-1\), to each of which a randomly doubled note is added. Then it calculates the sum of penalties for every candidate, and chooses the candidate with the lowest value. This results in generally consonant and reasonable sequences. The program does this for each shift in the message, and voila: it ends up with a melody that decrypts to the input text.</p>
+
+<h3 id="toc_9">Generating Scores</h3>
+
+<p>To generate the scores and MIDI files for each are generated using <a href="http://lilypond.org/">LilyPond.</a> For my sanity, the program only uses flats and all sequences are aligned to start and end on quarter notes.</p>
+
+<h3 id="toc_10">Running</h3>
+
+<p>To run this, you need Python and LilyPond command-line tools installed. I have not tested it on anything except my Macbook, so I have no idea if it will work for you.</p>
+
+<p>Use with</p>
+
+<p><code>python cryptocomposer.py (-t TEXT | -i INPUT) (-o OUTPUT) [options]</code></p>
+
+<p>With inputs and options as follows:</p>
+
+<ul>
+<li><code>-t TEXT</code>: <em>Required.</em> <code>TEXT</code> is the plaintext to encode, typed directly into the command line (in quotes). -t takes precedence over -i</li>
+<li><code>-i INPUT</code>: <em>Required.</em> <code>INPUT</code> is the path to a text file containing the plaintext to encode.</li>
+<li><code>-o OUTPUT</code>: <em>Required.</em> <code>OUTPUT</code> is the path to which the ciphertext is written</li>
+<li><code>-s SCALE</code>: <em>Optional.</em> <code>SCALE</code> is the scale to use for In Key penalties. The options for this are:
+
+<ul>
+<li><code>major</code>: <em>(default)</em> major scale</li>
+<li><code>minor</code>: minor scale</li>
+<li><code>harmonic</code>: harmonic minor scale</li>
+<li><code>pentatonic</code>: major pentatonic scale</li>
+</ul></li>
+<li><code>-l LENGTH</code>: <em>Optional.</em> <code>LENGTH</code> is the note length and rest length to use when generating sequences. Options for this are:
+
+<ul>
+<li><code>random</code>: <em>(default)</em> randomly chooses quarter, eighth or sixteenth notes to use for each sequence. If this option is chosen, sequences will be aligned to start and end on quarter notes.</li>
+<li><code>4</code>, <code>8</code>, or <code>16</code>: quarter, eighth, or sixteenth notes, respectively. If this option is chosen, the rests following sequences will have length equal to the note length.</li>
+</ul></li>
+<li><code>-h</code>: <em>Optional.</em> Show the usage screen and exit the program.</li>
+</ul>
+
+<h3 id="toc_11">Examples</h3>
+
+<p>Let&rsquo;s encode the phrase &ldquo;Code Making, Code Breaking,&rdquo; with random note lengths in the major pentatonic scale. Let&rsquo;s call the output files &ldquo;codes&rdquo; and put them on our desktop. We navigate to the folder where <code>cryptocomposer.py</code> is stored and run:</p>
+
+<div><pre><code class="language-none">python cryptocomposer.py -t &quot;Code Making, Code Breaking&quot; -o ~/Desktop/codes -s pentatonic -l random</code></pre></div>
+
+<p>This outputs three files: codes.ly, codes.pdf, and codes.midi. The pdf file contains the score of our output, the midi file contains a MIDI conversion of the score, and the <code>.ly</code> file is a LilyPond file used to generate the other two. Here is an example of a pdf generated by this command:
+<figure>
+    <center>
+    <img src="site/codes.pdf" width=90% style="border: gray 2px solid" alt="PDF of 'Code Making, Code Breaking' encrypted by Cryptocomposer">
+    <figcaption>PDF output of &lsquo;Code Making, Code Breaking&rsquo; encrypted by Cryptocomposer</figcaption>
+    </center>
+</figure>
+And its accompanying MIDI file:
+<center>
+<audio controls>
+    <source src="site/codes.mp3" type="audio/mpeg" alt="MIDI version of 'Code Making, Code Breaking' encrypted by Cryptocomposer">
+    Your browser does not support the audio element.
+</audio>
+</center>
+A little odd. Let&rsquo;s try encoding something else, maybe with a different scale and a set note length. This time we&rsquo;ll set up a text file on our desktop called <code>math.txt</code> and it will contain the text</p>
+
+<div><pre><code class="language-none">the answer to question five is pi</code></pre></div>
+
+<p>Then we run</p>
+
+<div><pre><code class="language-none">python cryptocomposer.py -i ~/Desktop/math.txt -o ~/Desktop/math -s minor -l 8</code></pre></div>
+
+<p>and get this PDF:
+<figure>
+    <center>
+    <img src="site/math.pdf" width=90% style="border: gray 2px solid" alt="PDF of 'the answer to question five is pi' encrypted by Cryptocomposer">
+    <figcaption>PDF output of &lsquo;the answer to question five is pi&rsquo; encrypted by Cryptocomposer</figcaption>
+    </center>
+</figure>
+And its MIDI file, played with an accompanying C pedal once every bar to illustrate the ominousness of this composition:
+<center>
+<audio controls>
+    <source src="site/math.mp3" type="audio/mpeg" alt="MIDI version of 'the answer to question five is pi' with C bass drone encrypted by Cryptocomposer">
+    Your browser does not support the audio element.
+</audio>
+</center></p>
+
+<p>Now, finally, I have a means of conveying answers to problem sets to my friends secretly! I&rsquo;ll just play this piece at my next modernist piano recital and no one will be able to stop us!</p>
+
+<h2 id="toc_12">Possible Next Steps</h2>
+
+<p>Cryptocomposer was a fun project, but is by no means a comprehensive method of implementing a generator for this encryption algorithm, or even a complete encryption algorithm! There are many places that this could be taken. Below is a list of a few extensions that could make this project even better.</p>
+
+<ul>
+<li>Updating the encryption algorithm to use a key<sup id="fnref5"><a href="#fn5" rel="footnote">5</a></sup></li>
+<li>Adding more pieces to the sequence generation algorithm, such as
+
+<ul>
+<li>Adding more scales</li>
+<li>A penalty for interval jumps</li>
+<li>Penalties for strangely constructed rhythms</li>
+<li>Repeating motifs when shifts repeat</li>
+<li>Automated transposition and modulation</li>
+</ul></li>
+<li>Or ditch this sequence generation entirely and use machine learning to create melodies<sup id="fnref6"><a href="#fn6" rel="footnote">6</a></sup> <sup id="fnref7"><a href="#fn7" rel="footnote">7</a></sup></li>
+<li>Add in an algorithm to generate chords in response to the melodies</li>
+<li>This encryption algorithm lends itself really well to automatically including a substitution or Vigenère cipher, which could be included in the program</li>
+</ul>
+
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p><a href="https://en.wikipedia.org/w/index.php?title=Musical_cryptogram">Wikipedia, Musical cryptogram. en. June 2017.</a>&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn2">
+<p>Eric Sams. “Musical Cryptography”. In: <em>Cryptologia</em> 3.4 (Oct. 1979), pp. 193–201. issn: 0161-1194.&nbsp;<a href="#fnref2" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn3">
+<p>The double-note rules have not yet been addressed at this step, so the order of intervals does not matter.&nbsp;<a href="#fnref3" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn4">
+<p>In the source code, this function is called <code>make_sequence</code>, and has other, non-random options for choosing interval signs, such as <code>up</code> and <code>down</code>, which always make sequences ascending or descending, respectively, or <code>center</code>, which always adds the next note in the direction of middle C.&nbsp;<a href="#fnref4" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn5">
+<p>There&rsquo;s a great pun to be had here, but I couldn&rsquo;t quite figure out how to implement it.&nbsp;<a href="#fnref5" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn6">
+<p><a href="https://link.springer.com/chapter/10.1007/978-3-540-31807-1_7">Garay Acevedo A. (2005) Fugue Composition with Counterpoint Melody Generation Using Genetic Algorithms. In: Wiil U.K. (eds) Computer Music Modeling and Retrieval. CMMR 2004. Lecture Notes in Computer Science, vol 3310. Springer, Berlin, Heidelberg</a>&nbsp;<a href="#fnref6" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn7">
+<p><a href="http://www.asimovinstitute.org/analyzing-deep-learning-tools-music/">Brinkkemper, Frank. October 5, 2016. <em>Analyzing Six Deep Learning Tools for Music Generation.</em> The Asimov Institute.</a>&nbsp;<a href="#fnref7" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
