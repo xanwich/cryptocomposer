@@ -1,0 +1,25 @@
+Cryptocomposer
+Xander Beberman
+Final project for LING 26040: Code Making, Code Breaking at UChicago
+
+Requires LilyPond command line tools installed.
+
+USAGE: python cryptocomposer.py (-t TEXT | -i INPUT) (-o OUTPUT) [-s SCALE] [-l LENGTH] [-h]
+
+	TEXT	plaintext to encode. -t takes precedence over -i
+
+	INPUT	.txt file with plaintext to encode
+
+	OUTPUT	.txt to which ciphertext is written
+
+	SCALE	scale to use for in key penalties. Options are:
+		major		(default) major scale
+		minor		minor scale
+		harmonic	harmonic minor scale
+		pentatonic	major pentatonic scale
+
+	LENGTH	note length to use when generating sequences. Options are:
+		random		(default) uses a random note length for every sequence
+		4, 8, 16	uses standard quarter, eighth, or 16th notes
+
+	-h	show this screen
